@@ -17,7 +17,7 @@ const PokemonsList = () => {
     if (!pokemansDetails?.length) {
       dispatch(fetchPokemonData(firstPageDataUrl));
     }
-  }, [dispatch]);
+  }, [dispatch,pokemansDetails?.length]);
 
   useEffect(() => {
     observer.current = new IntersectionObserver((entries) => {
@@ -36,7 +36,7 @@ const PokemonsList = () => {
         observer.current.disconnect();
       }
     };
-  }, [dispatch, nextPage]);
+  }, [dispatch, nextPage, isLoadingMore]);
 
   return (
     <div className="container">
